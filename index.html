@@ -1,50 +1,138 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Manifesto</title>
+  <meta charset="UTF-8">
+  <title>47 Days Adrift</title>
   <style>
-   body {
-     
-    background-color: #4169E1;
-    font-size: 24px;
-     font-family: Helvetica;
+    body {
+      font-family: Georgia, serif;
+      background-color: #0b1d2a;
+      color: #f2f2f2;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 15px;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2e6da4;
     }
   </style>
+</head>
+<body>
 
-</head> 
-<body> 
+<div id="story"></div>
 
-<h1>Manifesto</h1> 
-  
-  <p> Design Art Manifesto - CG World War 2 film
+<script>
+const story = {
 
-  </p>
-  <body  font-size: 24px; style="white-space:pre; font-family:monospace;" align="center"; >
+  start: {
+    text: "May 1943. A B-24 bomber crashes into the Pacific. Three men survive. One of them is Louis Zamperini. The ocean stretches endlessly in every direction.",
+    choices: [
+      { text: "Search the wreckage for supplies", next: "supplies" },
+      { text: "Conserve energy and wait", next: "wait" }
+    ]
+  },
 
-          Day 1   drift and fear
-        Day 5   hunger and tears
-      Day 10  stranded adrift the sea and sky
-    Day 15  hands shaking 
-  Day 20  sharks circling 
- Day 26  still alive, somehow still alive
+  supplies: {
+    text: "You find limited rations and a few tools. Sharks circle beneath the raft.",
+    choices: [
+      { text: "Try to catch fish", next: "fish" },
+      { text: "Save supplies for later", next: "storm" }
+    ]
+  },
 
-        nothing but the sea 
-       nothing but the will to be free
+  wait: {
+    text: "The sun beats down. Lips crack. Time slows. Hunger sharpens.",
+    choices: [
+      { text: "Attempt to signal passing aircraft", next: "plane" },
+      { text: "Focus on staying mentally strong", next: "mental" }
+    ]
+  },
 
-       I do not wait for rescue
-   I build my way forward 
+  fish: {
+    text: "Using your hands and improvised hooks, you catch a small fish. It keeps you alive another day.",
+    choices: [
+      { text: "Share equally with the crew", next: "brotherhood" },
+      { text: "Ration strictly", next: "storm" }
+    ]
+  },
 
-     Day 40  art is survival 
-     Day 40  survival is art
-     Day 40  frame by frame I endure 
+  storm: {
+    text: "A violent storm crashes over the raft. Waves nearly flip it. You cling to life for hours.",
+    choices: [
+      { text: "Pray and endure", next: "hope" },
+      { text: "Fight the waves aggressively", next: "exhaustion" }
+    ]
+  },
 
-        worlds from nothing
-     clouds from light
-   oceans and the silence
+  plane: {
+    text: "A Japanese plane appears overhead. It circles. Gunfire erupts. Bullets pierce the raft.",
+    choices: [
+      { text: "Dive into the water despite sharks", next: "survival" },
+      { text: "Stay low and protect the raft", next: "survival" }
+    ]
+  },
 
-      Day 45  wave by wave
-           I drift
-              I last
-                 I create
+  mental: {
+    text: "You remember running in the 1936 Olympics. You tell yourself: If you can endure pain on the track, you can endure this.",
+    choices: [
+      { text: "Make a pact to survive", next: "hope" }
+    ]
+  },
+
+  brotherhood: {
+    text: "Shared suffering strengthens resolve. The men support one another.",
+    choices: [
+      { text: "Endure together", next: "hope" }
+    ]
+  },
+
+  exhaustion: {
+    text: "Fighting the sea drains precious strength. Survival demands patience.",
+    choices: [
+      { text: "Learn from the mistake", next: "hope" }
+    ]
+  },
+
+  survival: {
+    text: "Against all odds, you survive the attack. Days blur together. Hunger and thirst gnaw constantly.",
+    choices: [
+      { text: "Hold onto hope", next: "hope" }
+    ]
+  },
+
+  hope: {
+    text: "After 47 days adrift, land appears on the horizon. Survival is not the end of the struggle — but you are still alive.",
+    choices: [
+      { text: "Restart the story", next: "start" }
+    ]
+  }
+
+};
+
+function showScene(sceneKey) {
+  const scene = story[sceneKey];
+  const container = document.getElementById("story");
+
+  container.innerHTML = `<p>${scene.text}</p>`;
+
+  scene.choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.textContent = choice.text;
+    button.onclick = () => showScene(choice.next);
+    container.appendChild(button);
+  });
+}
+
+showScene("start");
+</script>
+
 </body>
-</body> 
 </html>
