@@ -33,7 +33,7 @@
 const story = {
 
   start: {
-    text: "May 1943. A B-24 bomber crashes into the Pacific. Three men survive. One of them is Louis Zamperini. The ocean stretches endlessly in every direction.",
+    text: "May of 1943. A B-24 bomber crashes into the Pacific. Three men survive. One of them is Louis Zamperini, and the other two are Mac and Phil. The ocean stretches endlessly in every direction.",
     choices: [
       { text: "Search the wreckage for supplies", next: "supplies" },
       { text: "Conserve energy and wait", next: "wait" }
@@ -41,7 +41,7 @@ const story = {
   },
 
   supplies: {
-    text: "You find limited rations and a few tools. Sharks circle beneath the raft.",
+    text: "You find only a few chocolate bars and a some flares. Sharks began to circle beneath the raft.",
     choices: [
       { text: "Try to catch fish", next: "fish" },
       { text: "Save supplies for later", next: "storm" }
@@ -49,10 +49,10 @@ const story = {
   },
 
   wait: {
-    text: "The sun beats down. Lips crack. Time slows. Hunger sharpens.",
+    text: "The sun beats down. Lips crack. Time slows. Hunger grows.",
     choices: [
       { text: "Attempt to signal passing aircraft", next: "plane" },
-      { text: "Focus on staying mentally strong", next: "mental" }
+      { text: "Focus on staying Morale", next: "mental" }
     ]
   },
 
@@ -65,7 +65,7 @@ const story = {
   },
 
   storm: {
-    text: "A violent storm crashes over the raft. Waves nearly flip it. You cling to life for hours.",
+    text: "A violent storm crashes over the rafts. Waves nearly flip it over. You cling to the raft praying to God.",
     choices: [
       { text: "Pray and endure", next: "hope" },
       { text: "Fight the waves aggressively", next: "exhaustion" }
@@ -75,7 +75,7 @@ const story = {
   plane: {
     text: "A Japanese plane appears overhead. It circles. Gunfire erupts. Bullets pierce the raft.",
     choices: [
-      { text: "Dive into the water despite sharks", next: "survival" },
+      { text: "Dive into the water despite sharks being there", next: "survival" },
       { text: "Stay low and protect the raft", next: "survival" }
     ]
   },
@@ -83,7 +83,7 @@ const story = {
   mental: {
     text: "You remember running in the 1936 Olympics. You tell yourself: If you can endure pain on the track, you can endure this.",
     choices: [
-      { text: "Make a pact to survive", next: "hope" }
+      { text: "Make a promise to survive", next: "hope" }
     ]
   },
 
@@ -109,7 +109,7 @@ const story = {
   },
 
   hope: {
-    text: "After 47 days adrift, land appears on the horizon. Survival is not the end of the struggle — but you are still alive.",
+    text: "After 47 days adrift, a japanese patrol boat finds them. Survival is not the end of the struggle — but you are still alive.",
     choices: [
       { text: "Restart the story", next: "start" }
     ]
