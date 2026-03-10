@@ -1,138 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>47 Days Adrift</title>
-  <style>
-    body {
-      font-family: Georgia, serif;
-      background-color: #0b1d2a;
-      color: #f2f2f2;
-      padding: 40px;
-      line-height: 1.6;
-       font-size: 23px;
-    }
-    button {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 15px;
-      background-color: #1f4e79;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #2e6da4;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>My Midterm Practice Page</title>
+
+    <!-- Google Web Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+        }
+    </style>
 </head>
-<body>
 
-<div id="story"></div>
+<body class="container">
 
-<script>
-const story = {
+    <!-- First-level heading -->
+    <h1>Welcome to My Practice Webpage</h1>
 
-  start: {
-    text: "May of 1943. A B-24 bomber crashes into the Pacific. Three men survive. One of them is Louis Zamperini, and the other two are Mac and Phil. The ocean stretches endlessly in every direction.",
-    choices: [
-  { text: "Search the wreckage for supplies", next: "supplies" },  { text: "Conserve energy and wait", next: "wait" }
-    ]
-  },
+    <!-- Second-level heading -->
+    <h2>About This Page</h2>
 
-  supplies: {
-    text: "You find only a few chocolate bars and some flares. Sharks began to circle beneath the raft.",
-    choices: [
-      { text: "Try to catch fish", next: "fish" },
-      { text: "Save supplies for later", next: "storm" }
-    ]
-  },
+    <!-- Paragraph -->
+    <p>
+        This page is a practice example for my midterm exam. It demonstrates
+        basic HTML elements including headings, paragraphs, lists, links,
+        Google Web Fonts, and Bootstrap.
+    </p>
 
-  wait: {
-    text: "The sun beats down. Lips crack. Time slows. Hunger grows.",
-    choices: [
-      { text: "Attempt to signal passing aircraft", next: "plane" },
-      { text: "Focus on staying Morale", next: "mental" }
-    ]
-  },
+    <h2>Topics Covered</h2>
 
-  fish: {
-    text: "Using your hands and improvised hooks, you catch a small fish. It keeps you alive another day. you rant about mother's Gnocchi and talk about how the Japanese sometimes eat fish raw",
-    choices: [
-      { text: "Share equally with the crew", next: "brotherhood" },
-      { text: "Ration strictly", next: "storm" }
-    ]
-  },
+    <!-- Bulleted list -->
+    <ul>
+        <li>HTML title tag</li>
+        <li>Heading tags</li>
+        <li>Paragraphs</li>
+        <li>Lists</li>
+        <li>Links</li>
+    </ul>
 
-  storm: {
-    text: "A violent storm crashes over the rafts. Waves nearly flip it over. You cling to the raft praying to God.",
-    choices: [
-      { text: "Pray and endure", next: "hope" },
-      { text: "Fight the waves aggressively", next: "exhaustion" }
-    ]
-  },
+    <h2>Steps to Learn Web Development</h2>
 
-  plane: {
-    text: "A Japanese plane appears overhead. It circles. Gunfire erupts. Bullets pierce the raft.",
-    choices: [
-      { text: "Dive into the water despite sharks being there", next: "survival" },
-      { text: "Stay low and protect the raft", next: "survival" }
-    ]
-  },
+    <!-- Numbered list -->
+    <ol>
+        <li>Learn basic HTML</li>
+        <li>Practice CSS styling</li>
+        <li>Use frameworks like Bootstrap</li>
+        <li>Publish projects to GitHub</li>
+    </ol>
 
-  mental: {
-    text: "You remember running in the 1936 Olympics and being personally acknolwedged by Hitler. You tell yourself: If you can endure pain on the track, you can endure this.",
-    choices: [
-      { text: "Make a promise to survive", next: "hope" }
-    ]
-  },
+    <h2>Useful Links</h2>
 
-  brotherhood: {
-    text: "Shared suffering strengthens resolve. The men support one another.",
-    choices: [
-      { text: "Endure together", next: "hope" }
-    ]
-  },
-
-  exhaustion: {
-    text: "Fighting the sea drains precious strength. Survival demands patience.",
-    choices: [
-      { text: "Learn from the mistake", next: "hope" }
-    ]
-  },
-
-  survival: {
-    text: "Against all odds, you survive the attack. Days blur together. Hunger and thirst gnaw constantly.",
-    choices: [
-      { text: "Hold onto hope", next: "hope" }
-    ]
-  },
-
-  hope: {
-    text: "After 47 days adrift, a japanese patrol boat finds them. Although Mac is Dead, Phil is still alive. Survival is not the end of the struggle — but you are still alive.",
-    choices: [
-   { text: "Restart the story", next: "start" }
-    ]
-  }
-
-};
-
-function showScene(sceneKey) {
-  const scene = story[sceneKey];
-  const container = document.getElementById("story");
-
-  container.innerHTML = `<p>${scene.text}</p>`;
-
-  scene.choices.forEach(choice => {
-    const button = document.createElement("button");
-    button.textContent = choice.text;
-    button.onclick = () => showScene(choice.next);
-    container.appendChild(button);
-  });
-}
-
-showScene("start");
-</script>
+    <!-- Link -->
+    <p>
+        Visit 
+        <a href="https://getbootstrap.com" target="_blank">
+            Bootstrap's official website
+        </a>
+        to learn more about the framework.
+    </p>
 
 </body>
 </html>
