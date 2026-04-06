@@ -9,41 +9,55 @@
       font-family: Arial, sans-serif;
       text-align: center;
       color: white;
-
-      /* Simple ocean gradient (no animation = safe) */
       background: linear-gradient(to bottom, #0b3d5c, #1e6f9f);
+      overflow-x: hidden;
     }
 
     h2 {
       margin-top: 60px;
+      position: relative;
+      z-index: 2;
     }
 
     .line {
       font-size: 24px;
       margin: 20px;
       display: none;
+      position: relative;
+      z-index: 2; /* ALWAYS above waves */
     }
 
     button {
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+      position: relative;
+      z-index: 2;
     }
 
-    /* SIMPLE wave stripes (no movement = no bugs) */
-    .waves {
+    /* 🌊 Animated waves (safe) */
+    .wave {
       position: fixed;
       bottom: 0;
-      width: 100%;
+      width: 200%;
       height: 120px;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.1),
-        rgba(255,255,255,0.1) 10px,
-        transparent 10px,
-        transparent 20px
-      );
+      background: rgba(255,255,255,0.15);
+      border-radius: 40%;
+      animation: waveMove 12s linear infinite;
+      z-index: 1; /* behind text */
     }
+
+    .wave2 {
+      bottom: 20px;
+      opacity: 0.5;
+      animation-duration: 18s;
+    }
+
+    @keyframes waveMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
   </style>
 
 </head>
@@ -58,7 +72,8 @@
 
 <button onclick="showNext()">Reveal Next Line</button>
 
-<div class="waves"></div>
+<div class="wave"></div>
+<div class="wave wave2"></div>
 
 <script>
 let step = 1;
