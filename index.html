@@ -9,14 +9,16 @@
       font-family: Arial, sans-serif;
       text-align: center;
       color: white;
-      background: linear-gradient(to bottom, #0b3d5c, #1e6f9f);
       overflow-x: hidden;
+
+      /* 🌅 Sky gradient */
+      background: linear-gradient(to bottom, #87ceeb, #0b3d5c);
     }
 
     h2 {
       margin-top: 60px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .line {
@@ -24,7 +26,7 @@
       margin: 20px;
       display: none;
       position: relative;
-      z-index: 2; /* ALWAYS above waves */
+      z-index: 3;
     }
 
     button {
@@ -32,19 +34,32 @@
       font-size: 16px;
       cursor: pointer;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
-    /* 🌊 Animated waves (safe) */
+    /* ☀️ Sun */
+    .sun {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #ffd700, #ff8c00);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* 🌊 Waves */
     .wave {
       position: fixed;
       bottom: 0;
       width: 200%;
       height: 120px;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.2);
       border-radius: 40%;
       animation: waveMove 12s linear infinite;
-      z-index: 1; /* behind text */
+      z-index: 2;
     }
 
     .wave2 {
@@ -63,6 +78,8 @@
 </head>
 
 <body>
+
+<div class="sun"></div>
 
 <h2>Haiku: Lost at Sea</h2>
 
