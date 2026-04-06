@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ocean Haiku</title>
-  <style>
-    body {
-      background-color: #0b3d5c;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-
-    .line {
-      font-size: 24px;
-      margin: 20px;
-      display: none;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Simple Haiku</title>
 </head>
 <body>
 
-<h1>Haiku: Lost at Sea</h1>
+<h2>Haiku: Lost at Sea</h2>
 
-<div id="line1" class="line">Endless blue surrounds</div>
-<div id="line2" class="line">Sun burns, hope drifts with the tide</div>
-<div id="line3" class="line">Souls refuse to sink</div>
+<p id="line1"></p>
+<p id="line2"></p>
+<p id="line3"></p>
 
-<button onclick="showNext()">Reveal Next Line</button>
+<button onclick="showHaiku()">Show Haiku</button>
 
 <script>
-  let step = 1;
-
-  function showNext() {
-    if (step <= 3) {
-      document.getElementById("line" + step).style.display = "block";
-      step++;
-    }
-  }
+function showHaiku() {
+  document.getElementById("line1").innerHTML = "Endless blue surrounds";
+  document.getElementById("line2").innerHTML = "Sun burns, hope drifts away";
+  document.getElementById("line3").innerHTML = "Souls refuse to sink";
+}
 </script>
 
 </body>
