@@ -10,8 +10,6 @@
       text-align: center;
       color: white;
       overflow-x: hidden;
-
-      /* 🌅 Sky gradient */
       background: linear-gradient(to bottom, #87ceeb, #0b3d5c);
     }
 
@@ -37,7 +35,6 @@
       z-index: 3;
     }
 
-    /* ☀️ Sun */
     .sun {
       position: fixed;
       top: 80px;
@@ -50,7 +47,6 @@
       z-index: 1;
     }
 
-    /* 🌊 Waves */
     .wave {
       position: fixed;
       bottom: 0;
@@ -72,9 +68,7 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-
   </style>
-
 </head>
 
 <body>
@@ -87,18 +81,31 @@
 <p id="line2" class="line">Sun burns, hope drifts with the tide</p>
 <p id="line3" class="line">Souls refuse to sink</p>
 
-<button onclick="showNext()">Reveal Next Line</button>
+<!-- NEW EXTENDED LINES -->
+<p id="line4" class="line">Waves whisper softly</p>
+<p id="line5" class="line">Salt clings to tired hands</p>
+<p id="line6" class="line">The horizon won’t answer</p>
+<p id="line7" class="line">Night swallows the sky</p>
+<p id="line8" class="line">Stars flicker, then fade again</p>
+<p id="line9" class="line">Still, I drift forward</p>
+
+<button id="btn" onclick="showNext()">Reveal Next Line</button>
 
 <div class="wave"></div>
 <div class="wave wave2"></div>
 
 <script>
 let step = 1;
+let totalLines = 9;
 
 function showNext() {
-  if (step <= 3) {
+  if (step <= totalLines) {
     document.getElementById("line" + step).style.display = "block";
     step++;
+  }
+
+  if (step > totalLines) {
+    document.getElementById("btn").innerText = "All lines revealed 🌊";
   }
 }
 </script>
