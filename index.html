@@ -7,15 +7,18 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-          text-align: center;
-        color: white;
+      text-align: center;
+      color: white;
       overflow-x: hidden;
+
+      /* Sky */
       background: linear-gradient(to bottom, #87ceeb, #0b3d5c);
+      transition: background 1s;
     }
 
     h2 {
-        margin-top: 60px;
-          position: relative;
+      margin-top: 60px;
+      position: relative;
       z-index: 3;
     }
 
@@ -23,6 +26,8 @@
       font-size: 24px;
       margin: 20px;
       display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
       position: relative;
       z-index: 3;
     }
@@ -35,6 +40,7 @@
       z-index: 3;
     }
 
+    /* ☀️ Sun */
     .sun {
       position: fixed;
       top: 80px;
@@ -45,8 +51,30 @@
       background: radial-gradient(circle, #ffd700, #ff8c00);
       border-radius: 50%;
       z-index: 1;
+      transition: opacity 2s;
     }
 
+    /* ⭐ Stars */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 2s;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+
+    /* 🌊 Bottom waves */
     .wave {
       position: fixed;
       bottom: 0;
@@ -54,26 +82,58 @@
       height: 120px;
       background: rgba(255,255,255,0.2);
       border-radius: 40%;
-      animation: waveMove 12s linear infinite;
+      animation: waveMove 20s linear infinite;
       z-index: 2;
     }
 
     .wave2 {
       bottom: 20px;
       opacity: 0.5;
-      animation-duration: 18s;
+      animation-duration: 25s;
     }
 
     @keyframes waveMove {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
+
+    /* 🌊 Side waves */
+    .side-wave {
+      position: fixed;
+      top: 0;
+      width: 60px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.15),
+        rgba(255,255,255,0.15) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      z-index: 0;
+      animation: waveSide 6s ease-in-out infinite;
+    }
+
+    .left-wave { left: 0; }
+    .right-wave { right: 0; }
+
+    @keyframes waveSide {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+
   </style>
 </head>
 
 <body>
 
 <div class="sun"></div>
+<div class="stars" id="stars"></div>
+
+<!-- Side waves -->
+<div class="side-wave left-wave"></div>
+<div class="side-wave right-wave"></div>
 
 <h2>Haiku: 47 Days Adrift</h2>
 
@@ -81,7 +141,6 @@
 <p id="line2" class="line">Sun burns, hope drifts with the tide</p>
 <p id="line3" class="line">Souls refuse to starve or sink</p>
 
-<!-- NEW EXTENDED LINES -->
 <p id="line4" class="line">Waves whisper softly and strongly in other times</p>
 <p id="line5" class="line">Salt clings to tired hands</p>
 <p id="line6" class="line">The horizon won’t answer</p>
@@ -91,6 +150,7 @@
 
 <button id="btn" onclick="showNext()">Reveal Next Line</button>
 
+<!-- Bottom waves -->
 <div class="wave"></div>
 <div class="wave wave2"></div>
 
@@ -100,8 +160,29 @@ let totalLines = 9;
 
 function showNext() {
   if (step <= totalLines) {
-    document.getElementById("line" + step).style.display = "block";
+    let el = document.getElementById("line" + step);
+    el.style.display = "block";
+
+    setTimeout(() => {
+      el.style.opacity = 1;
+    }, 50);
+
     step++;
+  }
+
+  // 🌅 Sunset
+  if (step === 4) {
+    document.body.style.background =
+      "linear-gradient(to bottom, #f39c12, #2c3e50)";
+  }
+
+  // 🌌 Night
+  if (step === 7) {
+    document.body.style.background =
+      "linear-gradient(to bottom, #0b1a2a, #000000)";
+
+    document.getElementById("stars").style.opacity = 0.8;
+    document.querySelector(".sun").style.opacity = 0.3;
   }
 
   if (step > totalLines) {
